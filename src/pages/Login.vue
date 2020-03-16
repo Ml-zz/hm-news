@@ -21,6 +21,12 @@
     ></hm-input>
 
     <hm-botton @click="login">登录</hm-botton>
+
+    <div class="go-register">
+      还没有注册吧
+      去
+      <router-link to="./Register" class="link">注册</router-link>
+    </div>
   </div>
 </template>
 
@@ -31,6 +37,10 @@ export default {
       username: '',
       password: ''
     }
+  },
+  created() {
+    this.username = this.$route.params.username
+    this.password = this.$route.params.password
   },
   methods: {
     login() {
@@ -50,7 +60,7 @@ export default {
       }).then(res => {
         console.log(res.data)
         if (res.data.statusCode === 401) {
-          alert('用户名或者密码错误')
+          this.$toast.fail('用户名或者密码错误')
         }
         if (res.data.statusCode === 200) {
           this.$router.push('/user')
@@ -61,5 +71,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="less">
+.go-register {
+  text-align: right;
+  padding: 20px;
+}
 </style>

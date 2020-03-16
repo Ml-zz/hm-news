@@ -10,6 +10,11 @@ import HmBotton from './components/HmBotton.vue'
 import HmInput from './components/HmInput.vue'
 import axios from 'axios'
 
+import {
+  Toast
+} from 'vant'
+Vue.use(Toast)
+
 // 把axios绑定到vue的原型上
 Vue.prototype.$axios = axios
 //给axios配置默认路径
